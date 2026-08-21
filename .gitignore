@@ -1,0 +1,11 @@
+.env
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+data/input/*
+!data/input/.gitkeep
+data/working/*
+!data/working/.gitkeep
+results/*
+!results/practical_01/
+!results/practical_01/.gitkeep

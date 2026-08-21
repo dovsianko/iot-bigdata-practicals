@@ -1,0 +1,10 @@
+.git
+.env
+data/
+notebooks/
+results/
+src/
+scripts/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/

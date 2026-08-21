@@ -1,0 +1,29 @@
+services:
+  lab:
+    build:
+      context: .
+      args:
+        STUDENT_UID: ${STUDENT_UID:-1000}
+        STUDENT_GID: ${STUDENT_GID:-1000}
+    init: true
+    ports:
+      - "127.0.0.1:${JUPYTER_PORT:-8888}:8888"
+    environment:
+      PYTHONPATH: /workspace
+    volumes:
+      - ./data/input:/workspace/data/input:ro
+      - ./data/working:/workspace/data/working
+      - ./notebooks:/workspace/notebooks
+      - ./results:/workspace/results
+      - ./src:/workspace/src
+      - ./scripts:/workspace/scripts:ro
+    command: >-
+      jupyter lab
+      --ip=0.0.0.0
+      --port=8888
+      --no-browser
+      --ServerApp.root_dir=/workspace
+      --IdentityProvider.token=${JUPYTER_TOKEN:-iot-bigdata}
+      --allow-root
+      --ServerApp.token=''
+      --ServerApp.password=''
